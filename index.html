@@ -4,18 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Font Awosome/css/all.min.css">
     <title>To Do</title>
 </head>
 <body>
     <header>
         <h1>To Do</h1>
-        <button>Add +</button>
+        <button id="button-add">Add +</button>
     </header>
     <main>
         <section></section>
         <div class="button-add">
             <button>+</button>
         </div>
+        <div class="select-mode hidden" id="select-mode">
+            <div class="text">
+                <i class="fas fa-i"></i>
+                <p>Text</p>
+            </div>
+            <div class="list">
+                <i class="fas fa-list-check"></i>
+                <p>List</p>
+            </div>  
+        </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

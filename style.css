@@ -45,3 +45,48 @@ main {
     border-radius: 2rem;
     cursor: pointer;
 }
+.select-mode.hidden {
+    display: none;
+}
+.select-mode {
+    width: 20rem;
+    height: 10rem;
+    position: fixed;
+    left: 38%;
+    top: 30%;
+    background-color: #6d8196;
+    border-radius: 8px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.text {
+    background-color: #cbcbcb;
+    width: 30%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.list {
+    background-color: #cbcbcb;
+    width: 30%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.text:hover {
+    box-shadow: 0 0 5px black;
+}
+.list:hover {
+    box-shadow: 0 0 5px black;
+}
+
