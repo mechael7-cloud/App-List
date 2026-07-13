@@ -110,13 +110,22 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
 
         console.log(resaultText); // Untuk menguji apakah variabel resaultText sudah ada data atau belum
 
+        const el = e.target.closest('.input-mode');
+            el.remove();
+        
+
     }
     if (addList) {
+        
+        const dataText = document.querySelectorAll('.list-input');
+
+        const value = Array.from(dataText).map(dataText => dataText.value);
+
         const listData = {
             id: Date.now(),
             title: document.querySelector('.list-title').value,
-            text: document.querySelector('.list-input').value
-        }
+            text: value
+        };
 
         const allDataList = JSON.parse(localStorage.getItem('data-list')) || []
 
@@ -125,6 +134,26 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
         localStorage.setItem('data-list', JSON.stringify(listData));
 
         console.log(resaultList);
+
+        const el = e.target.closest('.input-mode');
+        el.remove();
     };
 });
 
+function writeData (e) {
+
+     
+
+    const allDataText = JSON.parse(localStorage.getItem('data-text'));
+    const allDataList = JSON.parse(localStorage.getItem('data-list'));
+    const section = document.querySelector('section');
+
+    if(allDataList.lenght === 0 && allDataText.lenght === 0 ) {
+        section.innerHTML = '';
+    } else {
+        section.innerHTML = `
+        `
+    }
+}
+
+// localStorage.clear();
