@@ -88,27 +88,27 @@ document.addEventListener("click", (e) => {
         el.remove('input-mode'); //Untuk menghapus class nya sendiri dan elemen nya 
         el.innerHTML = ''; // Untuk memastikan class child nya terhapus
         console.log('dihapus'); // Untuk output pemberitahuna!
-    }
+    };
 });
 
-main.addEventListener('click', (e) => {
-    const addText = e.target.closest('.add-button-text');
-    const addList = e.target.closest('.add-button-list');
+main.addEventListener('click', (e) => { // Menuju class input-list untuk mangambil elemen button
+    const addText = e.target.closest('.add-button-text'); // Untuk mengambil class add-button-text
+    const addList = e.target.closest('.add-button-list'); // Untuk mengambil class add-button-list 
 
-    if (addText) {
+    if (addText) { // Fungsi if untuk jika user mengclick button
         const textData = {
-            id: Date.now(),
-            title: document.getElementById('title').value,
-            text: document.getElementById('text-input').value
+            id: Date.now(), // Mengambil id data dari waktu sekarang
+            title: document.getElementById('title').value, // Mengambil judul dari input judul
+            text: document.getElementById('text-input').value // Mengambil text dari input text
         }
 
-        const allDataText = JSON.parse(localStorage.getItem('data-text')) || [];
+        const allDataText = JSON.parse(localStorage.getItem('data-text')) || []; // Mengambil data dari local storage 
 
-        resaultText.push(textData);
+        resaultText.push(textData); // Push data untuk di simpan di variabel resaultText.Fungsi di simpan di variabel adalah agar dapat dengan mudah di ambil dan di push ke html
 
-        localStorage.setItem('data-text', JSON.stringify(textData));
+        localStorage.setItem('data-text', JSON.stringify(textData)); // Membuat data yang sudah di variabel text data ke local storage
 
-        console.log(resaultText);
+        console.log(resaultText); // Untuk menguji apakah variabel resaultText sudah ada data atau belum
 
     }
     if (addList) {
@@ -125,21 +125,6 @@ main.addEventListener('click', (e) => {
         localStorage.setItem('data-list', JSON.stringify(listData));
 
         console.log(resaultList);
-    }
-})
+    };
+});
 
-// const addText = document.getElementById('add-button-text');
-// const addList = document.getElementById('add-button-list');
-
-// const inputTitle = document.getElementById('title').value;
-// const inputText = document.getElementById('text-input').value;
-// const inputTitleList = document.getElementById('list-title').value;
-
-// addText.addEventListener('click', (e) => {
-//     e.preventDefault;
-//     console.log('hello1')
-// });
-
-// addText.addEventListener('click', () => {
-//     console.log('1');
-// })
