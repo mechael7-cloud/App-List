@@ -6,8 +6,10 @@ const modeText = document.getElementById('mode-text');
 const modeList = document.getElementById('mode-list');
 const main = document.querySelector('main');
 const body = document.querySelector('body');
+const text = document.querySelector('.place-text');
 let resaultText = [];
 let resaultList = [];
+
 
 buttonAdd.addEventListener('click', () => { // Membuat tombol add memuncul kan class select-mode
     selectMode.classList.toggle('hidden');
@@ -151,9 +153,11 @@ function writeData (e) {
     if(allDataList.lenght === 0 && allDataText.lenght === 0 ) {
         section.innerHTML = '';
     } else {
-        section.innerHTML = `
-        `
+        section.innerHTML = ``;
     }
-}
+};
+
+
+
 
 // localStorage.clear();
