@@ -235,14 +235,14 @@ section {
 }
 .place-text {
     width: 20%;
-    height: 40%;
+    height: 60%;
     background-color: #6d8196;
     padding: 4px;
     border-radius: 4px;
 }
 .place-text p {
     display: -webkit-box;    
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -251,7 +251,7 @@ section {
 .place-title {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     font-size: 1.3rem;
     text-wrap: balance;
@@ -263,6 +263,35 @@ section {
 .place-text button {
     background-color: #6d8196;
     border: none;
+    cursor: pointer;
+    margin-top: 0.2rem;
     color: #4a4a4a;
 }
-
+.place-list {
+    width: 20%;
+    height: 50%;
+    background-color: #6d8196;
+    padding: 4px;
+    border-radius: 4px;
+}
+.place-list-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    text-wrap: balance;
+}
+.place-list-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background-color: #cbcbcb;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.place-list-checkbox p {
+    margin: 0;
+    flex: 1;
+    word-wrap: break-word;
+}
