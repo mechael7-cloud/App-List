@@ -232,19 +232,23 @@ section {
     display: grid;
     padding: 2rem;
     box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-auto-rows: 200px;  
+    gap: 30px;
 }
 .place-text {
-    width: 20%;
-    height: 60%;
+    width: 100%;
+    height: 80%;
     background-color: #6d8196;
-    padding: 4px;
+    padding: 6px;
     border-radius: 4px;
+    overflow: hidden;
 }
 .place-text p {
     display: -webkit-box;    
-    -webkit-line-clamp: 3;
-    line-clamp: 4;
-    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;  /* Berfungsi untuk mengatur baris teks yang di tampilkan */
+    line-clamp: 5; /* Berfungsi untuk webkit nya tidak menjadi error */
+    -webkit-box-orient: vertical; /* Berfungsi untuk membuat titik di ujung teks */ 
     overflow: hidden;
     line-height: 1.4;
 }
@@ -253,12 +257,12 @@ section {
     flex-direction: row;
     align-items: start;
     justify-content: space-between;
-    font-size: 1.3rem;
+    font-size: 1.5vw;
     text-wrap: balance;
 }
 .place-text hr {
     width: 98%;
-    margin: 0.5rem auto;
+    margin: 2px auto;
 }
 .place-text button {
     background-color: #6d8196;
@@ -268,18 +272,39 @@ section {
     color: #4a4a4a;
 }
 .place-list {
-    width: 20%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     background-color: #6d8196;
     padding: 4px;
+    box-sizing: border-box;
     border-radius: 4px;
+    overflow: hidden;
 }
 .place-list-title {
     display: flex;
     flex-direction: row;
+    align-items: start;
+    padding: 5px;
     justify-content: space-between;
     font-size: 1.2rem;
     text-wrap: balance;
+}
+
+.place-list ul {
+    height: 100%;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* -webkit-mask-image: linear-gradient(to bottom, black 70%, rbga(0, 0, 0, 10) 100%); */
+    mask-image: linear-gradient(to bottom, black 70%, transparent 90%); /* Berfungsi untuk membuat filter blur di bawah class 70% untuk mengukur kegelapan 90% untuk tranparan class semakin kecil semaking gelap */
+}
+.place-list-title button {
+    border: none;
+    outline: none;
+    background-color: #6d8196;
+    color: #4a4a4a;
+    cursor: pointer;
 }
 .place-list-checkbox {
     display: flex;
