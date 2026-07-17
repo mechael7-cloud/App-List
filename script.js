@@ -157,6 +157,45 @@ function writeData (e) {
     }
 };
 
+const cards = document.querySelectorAll('.place-text');
+
+const overlay = document.getElementById('overlay');
+const cardOver = document.getElementById('card-over');
+const titleOver = document.getElementById('title-card');
+const textOver = document.getElementById('teks-card');
+
+
+cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+        const titlePlaceText = card.querySelector('.title-text-1').textContent;
+        const textPlaceText = card.querySelector('.hello').textContent;
+
+        titleOver.textContent = titlePlaceText;
+        textOver.textContent = textPlaceText;
+
+        console.log(titleOver);
+        console.log(textOver);
+
+        console.log(titlePlaceText);
+        console.log(textPlaceText);
+
+        overlay.classList.add('active');
+    })
+})
+
+// document.querySelectorAll('.place-text').forEach(placeText => {
+//     placeText.addEventListener('click', (e) => {
+//         if(e.target.closest('#delete-text') || e.target.type === 'checkbox') return
+
+//         const title = placeText.querySelector('.title-text-1').textContent;
+//         const bodys = placeText.querySelector('.text-text').textContent;
+
+//         titleOver.textContent = title;
+//         textOver.textContent = bodys;
+
+//         overlay.classList.add('active');
+//     })
+// })
 
 
 
