@@ -306,7 +306,7 @@ section {
     color: #4a4a4a;
     cursor: pointer;
 }
-.place-list-checkbox {
+    .place-list-checkbox {
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -348,7 +348,85 @@ section {
     opacity: 0;
     transition: transform 0.25s ease, opacity 0.25 ease;
 }
+.title-over {
+    display: flex;
+    justify-content: space-between;
+}
+#title-card {
+    font-size: 3.5vh;
+}
+#teks-card {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+.card-over hr {
+    width: 99%;
+    margin: 10px 0px;
+}
+.card-over button {
+    background-color: #6d8196;
+    border: none;
+    color: #4a4a4a;
+    cursor: pointer;
+}
 .overlay.active .card-over {
+    transform: scale(1);
+    opacity: 1;   
+}
+
+
+
+
+.overlist {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 2.5s ease ;
+}
+.overlist.active {
+    display: flex;
+    opacity: 1;
+}
+.card-overlist {
+    background-color: #6d8196;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    border-radius: 4px;
+    overflow-y: auto;
+    padding: 24px;
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25 ease;
+}
+.title-overlist {
+    display: flex;
+    justify-content: space-between;
+}
+#title-listover {
+    font-size: 3.5vh;
+}
+/* #teks-card {
+    font-size: 1rem;
+    line-height: 1.5;
+} */
+.card-overlist hr {
+    width: 99%;
+    margin: 10px 0px;
+}
+.card-overlist button {
+    background-color: #6d8196;
+    border: none;
+    color: #4a4a4a;
+    cursor: pointer;
+}
+.overlist.active .card-overlist {
     transform: scale(1);
     opacity: 1;   
 }

@@ -144,8 +144,6 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
 
 function writeData (e) {
 
-     
-
     const allDataText = JSON.parse(localStorage.getItem('data-text'));
     const allDataList = JSON.parse(localStorage.getItem('data-list'));
     const section = document.querySelector('section');
@@ -163,6 +161,7 @@ const overlay = document.getElementById('overlay');
 const cardOver = document.getElementById('card-over');
 const titleOver = document.getElementById('title-card');
 const textOver = document.getElementById('teks-card');
+const closeOver = document.getElementById('close-over');
 
 
 cards.forEach(function (card) {
@@ -180,8 +179,37 @@ cards.forEach(function (card) {
         console.log(textPlaceText);
 
         overlay.classList.add('active');
+    });
+
+    closeOver.addEventListener('click', () => {
+        overlay.classList.remove('active');
     })
-})
+});
+
+const cardsList = document.querySelectorAll('.place-list');
+
+const overlist = document.getElementById('overlist');
+const cardOverlist = document.getElementById('card-overlist');
+const titleOverlist = document.getElementById('title-listover');
+// const textOver = document.getElementById('teks-card');
+const closeOverlist = document.getElementById('close-overlist');
+
+cardsList.forEach(function (cardList) {
+    cardList.addEventListener('click', function () {
+        const titlePlaceList = cardList.querySelector('.list-title').textContent;
+        // const textPlaceList = card.querySelector('.hello').textContent;
+
+        titleOverlist.textContent = titlePlaceList;
+        // textOver.textContent = textPlaceText;
+
+
+        overlist.classList.add('active');
+    });
+
+    closeOverlist.addEventListener('click', () => {
+        overlist.classList.remove('active');
+    })
+});
 
 // document.querySelectorAll('.place-text').forEach(placeText => {
 //     placeText.addEventListener('click', (e) => {
