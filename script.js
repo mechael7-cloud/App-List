@@ -97,6 +97,8 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
     const addText = e.target.closest('.add-button-text'); // Untuk mengambil class add-button-text
     const addList = e.target.closest('.add-button-list'); // Untuk mengambil class add-button-list 
 
+    e.preventDefault();
+
     if (addText) { // Fungsi if untuk jika user mengclick button
         const textData = {
             id: Date.now(), // Mengambil id data dari waktu sekarang
@@ -104,11 +106,11 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
             text: document.getElementById('text-input').value // Mengambil text dari input text
         }
 
-        const allDataText = JSON.parse(localStorage.getItem('data-text')) || []; // Mengambil data dari local storage 
+        // const allDataText = JSON.parse(localStorage.getItem('data-text')) || []; // Mengambil data dari local storage 
 
         resaultText.push(textData); // Push data untuk di simpan di variabel resaultText.Fungsi di simpan di variabel adalah agar dapat dengan mudah di ambil dan di push ke html
 
-        localStorage.setItem('data-text', JSON.stringify(textData)); // Membuat data yang sudah di variabel text data ke local storage
+        localStorage.setItem('data-text', JSON.stringify(resaultText)) || []; // Membuat data yang sudah di variabel text data ke local storage
 
         console.log(resaultText); // Untuk menguji apakah variabel resaultText sudah ada data atau belum
 
@@ -129,17 +131,16 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
             text: value
         };
 
-        const allDataList = JSON.parse(localStorage.getItem('data-list')) || []
 
         resaultList.push(listData);
-
-        localStorage.setItem('data-list', JSON.stringify(listData));
+        localStorage.setItem('data-list', JSON.stringify(resaultList)) || [];
 
         console.log(resaultList);
 
         const el = e.target.closest('.input-mode');
         el.remove();
     };
+    writeData();
 });
 
 function writeData (e) {
@@ -148,11 +149,22 @@ function writeData (e) {
     const allDataList = JSON.parse(localStorage.getItem('data-list'));
     const section = document.querySelector('section');
 
-    if(allDataList.lenght === 0 && allDataText.lenght === 0 ) {
+    console.log(allDataText);
+
+    if(!allDataText || allDataText.length == 0 ) {
         section.innerHTML = '';
     } else {
-        section.innerHTML = ``;
-    }
+        section.innerHTML = allDataText.map(textData => 
+            `<div class="place-text" data-id='${textData.id}'>
+                <div class="place-title">
+                    <p class="title-text-1">${textData.title}</p>
+                    <button><i class="fas fa-x" id="delete-text"></i></button>
+                </div>
+                <hr>
+                <p class="hello">${textData.text}</p>
+            </div>`
+        ).join();
+    };
 };
 
 const cards = document.querySelectorAll('.place-text');
@@ -211,6 +223,10 @@ cardsList.forEach(function (cardList) {
     })
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    writeData();
+})
 // document.querySelectorAll('.place-text').forEach(placeText => {
 //     placeText.addEventListener('click', (e) => {
 //         if(e.target.closest('#delete-text') || e.target.type === 'checkbox') return
