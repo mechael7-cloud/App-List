@@ -151,7 +151,7 @@ function writeData (e) {
 
     console.log(allDataText);
 
-    if(!allDataText || allDataText.length == 0 ) {
+    if(!allDataText || allDataText.length === 0 ) {
         section.innerHTML = '';
     } else {
         section.innerHTML = allDataText.map(textData => 
@@ -165,7 +165,69 @@ function writeData (e) {
             </div>`
         ).join();
     };
+
+    if(!allDataList || allDataList.length === 0) {
+        return
+    } else {
+        // section.innerHTML = allDataList.map(listData =>
+        //     `<div class="place-list" data-id=${listData.id}>
+        //         <div class="place-list-title">
+        //             <p class="list-title">${listData.title}</p>
+        //             <button><i class="fas fa-x"></i></button>
+        //         </div>
+        //         <hr>
+        //         <div class="listiner">
+        //             <ul>
+        //                 <li class="place-list-checkbox">
+        //                     <input type="checkbox">
+        //                     <p>${listData.text}</p>
+        //                 </li>
+        //             </ul>
+        //         </div>
+        //     </div>`
+        // ).join();
+        createList();
+    }
 };
+
+function createList () {
+    const section = document.querySelector('section');
+    
+    let dataList = JSON.parse(localStorage.getItem('data-list'));
+
+    dataList.forEach(card => {
+        const placeList = document.createElement('div');
+        placeList.className = 'place-list';
+        placeList.dataset.id = card.id;
+
+        const placeTitle = document.createElement('div');
+        placeTitle.className = 'place-list-title';
+        placeList.appendChild(placeTitle);
+
+        const teksTitle = document.createElement('p');
+        teksTitle.className = 'list-title';
+        teksTitle.textContent = card.title;
+        placeTitle.appendChild(teksTitle);
+
+        const buttonClose = document.createElement('button');
+        const i = document.createElement('i');
+        i.className = 'fas fa-x';
+        buttonClose.appendChild(i);
+        placeTitle.appendChild(buttonClose);
+
+        card.text.forEach((itemsText, index) => {
+            const items = document.createElement('div');
+            items.className = 'place-list-checkbox';
+            items.innerHTML = `
+            <input type="checkbox">
+            <p>${itemsText}</p>`;
+
+            placeList.appendChild(items);
+        });
+        section.appendChild(placeList);
+    });
+
+}
 
 const cards = document.querySelectorAll('.place-text');
 
