@@ -114,44 +114,44 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
 
         console.log(resaultText); // Untuk menguji apakah variabel resaultText sudah ada data atau belum
 
-        const el = e.target.closest('.input-mode');
+        const el = e.target.closest('.input-mode'); // Menargetkan class input-mode agar menghapus dari el
             el.remove();
         
 
     }
     if (addList) {
         
-        const dataText = document.querySelectorAll('.list-input');
+        const dataText = document.querySelectorAll('.list-input'); // Kode ini hampir sama dengan di atas
 
-        const value = Array.from(dataText).map(dataText => dataText.value);
+        const value = Array.from(dataText).map(dataText => dataText.value); // Untuk membuat data dari dataText ke array map berfungsi agar bisa menambahkan ke dalam variabel namun di dalam varabael tersebut berubah menjadi array 
 
-        const listData = {
-            id: Date.now(),
-            title: document.querySelector('.list-title').value,
-            text: value
+        const listData = { // variabel untuk menyimpan data dari input mulai dari:
+            id: Date.now(),                                                     // -id yang di ambil dari waktu sekarang
+            title: document.querySelector('.list-title').value,                 // -title yang diambil dari input di title
+            text: value                                                         // teks di ambil dari value yang merupakan variabel di atas berbentuk array
         };
 
 
-        resaultList.push(listData);
-        localStorage.setItem('data-list', JSON.stringify(resaultList)) || [];
+        resaultList.push(listData); // resaultList di push ke push ke variabel listData yang merupakan variabel yang berisi data
+        localStorage.setItem('data-list', JSON.stringify(resaultList)) || []; // Push ke local storage.Untuk kenapa resaultList karena resaultList sendiri sudah menyimpan data dari variabel listData
 
-        console.log(resaultList);
+        console.log(resaultList); // Untuk mencek dari variabel resaultList
 
-        const el = e.target.closest('.input-mode');
+        const el = e.target.closest('.input-mode'); 
         el.remove();
     };
     writeData();
 });
 
-function writeData (e) {
+function writeData (e) { // Fungsi untuk menulis hasil dari local storage agar di cetak ke dalam HTML
 
-    const allDataText = JSON.parse(localStorage.getItem('data-text'));
-    const allDataList = JSON.parse(localStorage.getItem('data-list'));
-    const section = document.querySelector('section');
+    const allDataText = JSON.parse(localStorage.getItem('data-text')); // Variabel untuk mengambil data teks dari local storage
+    const allDataList = JSON.parse(localStorage.getItem('data-list')); // Variabel untuk mengambil data list dari local storage
+    const section = document.querySelector('section'); // Variabel untuk elemen section agar bisa di cetak di HTML
 
-    console.log(allDataText);
+    console.log(allDataText); // Variabel untuk mencek apakah variabel allDataText ada data atau tidak 
 
-    if(!allDataText || allDataText.length === 0 ) {
+    if(!allDataText || allDataText.length === 0 ) { 
         section.innerHTML = '';
     } else {
         section.innerHTML = allDataText.map(textData => 
