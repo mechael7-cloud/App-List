@@ -40,7 +40,7 @@ modeList.addEventListener('click', () => {
     <div class="input-mode">
             <div class="input-list">
                 <div class="unknown">
-                    <input type="text" placeholder="Title" class="list-title">
+                    <input type="text" placeholder="Title" class="list-title-check">
                     <hr>
                     <div class="raw">
                         <input type="checkbox" id="checkbox-input">
@@ -127,18 +127,27 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
 
         const listData = { // variabel untuk menyimpan data dari input mulai dari:
             id: Date.now(),                                                     // -id yang di ambil dari waktu sekarang
-            title: document.querySelector('.list-title').value,                 // -title yang diambil dari input di title
+            title: document.querySelector('.list-title-check').value,                 // -title yang diambil dari input di title
             text: value                                                         // teks di ambil dari value yang merupakan variabel di atas berbentuk array
         };
+
+        const ListOld = localStorage.getItem('data-list'); 
+        let resaultList = ListOld ? JSON.parse(ListOld) : [];
+
+        
 
 
         resaultList.push(listData); // resaultList di push ke push ke variabel listData yang merupakan variabel yang berisi data
         localStorage.setItem('data-list', JSON.stringify(resaultList)) || []; // Push ke local storage.Untuk kenapa resaultList karena resaultList sendiri sudah menyimpan data dari variabel listData
 
+
+
         console.log(resaultList); // Untuk mencek dari variabel resaultList
 
         const el = e.target.closest('.input-mode'); 
         el.remove();
+
+        console.log(listData);
     };
     writeData();
 });
@@ -289,19 +298,6 @@ cardsList.forEach(function (cardList) {
 document.addEventListener('DOMContentLoaded', () => {
     writeData();
 })
-// document.querySelectorAll('.place-text').forEach(placeText => {
-//     placeText.addEventListener('click', (e) => {
-//         if(e.target.closest('#delete-text') || e.target.type === 'checkbox') return
-
-//         const title = placeText.querySelector('.title-text-1').textContent;
-//         const bodys = placeText.querySelector('.text-text').textContent;
-
-//         titleOver.textContent = title;
-//         textOver.textContent = bodys;
-
-//         overlay.classList.add('active');
-//     })
-// })
 
 
 
