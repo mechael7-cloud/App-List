@@ -117,6 +117,7 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
         const el = e.target.closest('.input-mode'); // Menargetkan class input-mode agar menghapus dari el
             el.remove();
         
+        writeData();
 
     }
     if (addList) {
@@ -148,8 +149,40 @@ main.addEventListener('click', (e) => { // Menuju class input-list untuk mangamb
         el.remove();
 
         console.log(listData);
+
+        writeData();
     };
-    writeData();
+    
+
+    //const buttonCloseListTx = 
+    //const buttonCloseListLs = 
+
+    // console.log('hello wordl1', buttonCloseListTx);
+    // console.log('hello world2', buttonCloseListLs);
+
+    if(e.target.closest('#delete-text')) {
+        const placeTx = e.target.closest('.place-text');
+        const deleteId = parseInt(placeTx.getAttribute('data-id'));
+
+        let dataTx = JSON.parse(localStorage.getItem('data-text')) || [] ;
+        dataTx = dataTx.filter(data => data.id !== deleteId);
+        localStorage.setItem('data-text', JSON.stringify(dataTx));
+
+        placeTx.remove();
+    };
+
+    if(e.target.closest('#delete-list')) {
+        const placeLs = e.target.closest('.place-list');
+        const deleteId = parseInt(placeLs.getAttribute('data-id'));
+
+        let dataLs = JSON.parse(localStorage.getItem('data-list')) || [];
+        dataLs = dataLs.filter(data => data.id !== deleteId);
+        localStorage.setItem('data-list', JSON.stringify(dataLs));
+
+        placeLs.remove();
+    };
+
+    
 });
 
 function writeData (e) { // Fungsi untuk menulis hasil dari local storage agar di cetak ke dalam HTML
@@ -158,7 +191,7 @@ function writeData (e) { // Fungsi untuk menulis hasil dari local storage agar d
     const allDataList = JSON.parse(localStorage.getItem('data-list')); // Variabel untuk mengambil data list dari local storage
     const section = document.querySelector('section'); // Variabel untuk elemen section agar bisa di cetak di HTML
 
-    console.log(allDataText); // Variabel untuk mencek apakah variabel allDataText ada data atau tidak 
+    //console.log(allDataText); // Variabel untuk mencek apakah variabel allDataText ada data atau tidak 
 
     if(!allDataText || allDataText.length === 0 ) { 
         section.innerHTML = '';
@@ -221,6 +254,7 @@ function createList () {
         const buttonClose = document.createElement('button');
         const i = document.createElement('i');
         i.className = 'fas fa-x';
+        buttonClose.id = 'delete-list';
         buttonClose.appendChild(i);
         placeTitle.appendChild(buttonClose);
 
@@ -294,10 +328,11 @@ cardsList.forEach(function (cardList) {
     })
 });
 
+// main.addEventListener('click', (e)  => {
+    
+// });
 
-document.addEventListener('DOMContentLoaded', () => {
-    writeData();
-})
+    
 
 
 
