@@ -290,7 +290,7 @@ section {
     text-wrap: balance;
 }
 
-.place-list ul {
+.place-list .wrap-list {
     height: 100%;
     position: relative;
     list-style: none;

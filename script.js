@@ -205,7 +205,7 @@ function writeData (e) { // Fungsi untuk menulis hasil dari local storage agar d
                 <hr>
                 <p class="hello">${textData.text}</p>
             </div>`
-        ).join();
+        ).join('');
     };
 
     if(!allDataList || allDataList.length === 0) {
@@ -258,6 +258,11 @@ function createList () {
         buttonClose.appendChild(i);
         placeTitle.appendChild(buttonClose);
 
+        const pcCr = document.createElement('div');
+        pcCr.className = 'wrap-list';
+
+        placeList.appendChild(pcCr)
+
         card.text.forEach((itemsText, index) => {
             const items = document.createElement('div');
             items.className = 'place-list-checkbox';
@@ -265,7 +270,7 @@ function createList () {
             <input type="checkbox">
             <p>${itemsText}</p>`;
 
-            placeList.appendChild(items);
+            pcCr.appendChild(items);
         });
         section.appendChild(placeList);
     });
@@ -328,6 +333,10 @@ cardsList.forEach(function (cardList) {
     })
 });
 
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault()
+    writeData()
+})
 // main.addEventListener('click', (e)  => {
     
 // });
